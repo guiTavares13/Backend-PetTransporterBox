@@ -23,6 +23,7 @@ DATABASE_HOST = 'endereço do banco de ados'
 DATABASE_USER = 'nome do usuário'
 DATABASE_PASS = 'senha de conexão'
 DATABASE_SCHEMA = 'Nome do schema a ser utilizada'
+DATABASE_PORT = 'Porta de conexão com database'
 PORT = 'Valor da porta a ser exposta'
 
 ```
@@ -34,5 +35,6 @@ DATABASE_HOST = 'localhost'
 DATABASE_USER = 'user'
 DATABASE_PASS = 'psw'
 DATABASE_SCHEMA = 'mSchema'
+DATABASE_PORT = 3306
 PORT = '3333'
 ```
