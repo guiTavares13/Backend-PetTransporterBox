@@ -44,8 +44,8 @@ CREATE TABLE tb_usuario(
     usuario_nome VARCHAR(64),
     usuario_documento VARCHAR(16),
     usuario_data_nascimento DATETIME,
-    usuario_email DATETIME,
-    usuario_telefone DATETIME
+    usuario_email VARCHAR(128),
+    usuario_telefone VARCHAR(32)
 );
 
 CREATE TABLE tb_pet_x_usuario(
@@ -71,6 +71,7 @@ CREATE TABLE tb_viagem(
     viagem_id VARCHAR(40) NOT NULL PRIMARY KEY,
     pet VARCHAR(40),
     caixa VARCHAR(40),
+    viagem_data DATETIME,
     FOREIGN KEY (pet) REFERENCES tb_pet(pet_id),
     FOREIGN KEY (caixa) REFERENCES tb_caixa(caixa_id)
 );
@@ -84,7 +85,7 @@ CREATE TABLE tb_localizacao_pet(
 CREATE TABLE tb_leitura(
     leitura_id VARCHAR(40) NOT NULL PRIMARY KEY,
     leitura_data DATETIME,
-    leitura_porta_aberta TINYINT(1),
+    leitura_porta_aberta BIT(1),
     viagem VARCHAR(40),
     estado_pet VARCHAR(40),
     caixa VARCHAR(40),
