@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = express.Router();
 const {celebrate, Segments, Joi, CelebrateError} = require('celebrate');
-const userModel = require('../models/userModel')
+const userModel = require('../DAO/userModelDAO')
 
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
