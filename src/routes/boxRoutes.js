@@ -31,6 +31,12 @@ routes.get('/:caixaId',(req,res)=>{
 
     boxController.getSingleBox(req,res,req.params.caixaId)  
 
+});
+
+routes.get('/',(req,res)=>{
+
+    boxController.getBoxes(req,res)  
+
 })
 
 routes.put('/:caixaId',celebrate({

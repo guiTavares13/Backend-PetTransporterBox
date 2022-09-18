@@ -655,7 +655,7 @@ paths:
       security:
         - bearerAuth: [] 
  
-   /measure/{tripId}:
+  /measure/{tripId}:
     post:
       tags:
         - Leituras
@@ -1052,7 +1052,7 @@ components:
           example: "alive"
         location:
           type: object
-            properties:
+          properties:
               latitude:
                 type: number
                 example: -23.477785
@@ -1076,7 +1076,7 @@ components:
             example: "alive"
           location:
             type: object
-              properties:
+            properties:
                 latitude:
                   type: number
                   example: -23.477785
@@ -1135,7 +1135,7 @@ components:
             items:
               $ref: '#/components/schemas/CaixaGET'
             
-      LeituraArray:
+    LeituraArray:
       description: Lista de Leituras
       content:
         application/json:
