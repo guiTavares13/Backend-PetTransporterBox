@@ -9,7 +9,7 @@ routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
                     id:Joi.string().required(),
                     name:Joi.string().required(),
-                    bread:Joi.string().required(),
+                    breed:Joi.string().required(),
                     category:Joi.string().required(),
                     })    
             }),(req,res)=>{
@@ -40,7 +40,7 @@ routes.put('/:petId',celebrate({
     [Segments.BODY]:Joi.object({
                     id:Joi.string().required(),
                     name:Joi.string().required(),
-                    bread:Joi.string().required(),
+                    breed:Joi.string().required(),
                     category:Joi.string().required(),
                     })    
             }),(req,res)=>{
