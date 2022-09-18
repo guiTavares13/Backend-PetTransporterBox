@@ -15,13 +15,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.set('view engine', 'ejs');
-app.use(errors());
 
 //routes
 app.use('/pet',petRouters);
 app.use('/user',userRoutes);
 app.use('/caixa',boxRoutes);
 app.use('/caixaModel',boxModelRoutes);
+
+app.use(errors());
 
 
 //database test
