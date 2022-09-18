@@ -6,7 +6,7 @@ async function insertPet(req, res, pet)
     pet = petDAO.build({
         pet_nome:pet.name,
         pet_idade: pet.age,
-        pet_raca: pet.race,
+        pet_raca: pet.breed,
         pet_tipo: pet.type
     });
 
@@ -69,7 +69,7 @@ async function updatePet(req, res, petId, pet)
         await petDAO.update({
             pet_nome:pet.name,
             pet_idade: pet.age,
-            pet_raca: pet.race,
+            pet_raca: pet.breed,
             pet_type: pet.type
         },{
             where:{
