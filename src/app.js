@@ -10,6 +10,7 @@ const userRoutes = require('./routes/userRoutes');
 const boxRoutes = require('./routes/boxRoutes');
 const boxModelRoutes = require('./routes/boxModelRoutes');
 const tripRoutes = require('./routes/tripRoutes');
+const measureRoutes = require('./routes/measureRoutes')
 
 const app = express();
 
@@ -23,6 +24,8 @@ app.use(`/api/v${process.env.API_VERSION}/user`,userRoutes);
 app.use(`/api/v${process.env.API_VERSION}/caixa`,boxRoutes);
 app.use(`/api/v${process.env.API_VERSION}/caixaModel`,boxModelRoutes);
 app.use(`/api/v${process.env.API_VERSION}/trip`,tripRoutes);
+app.use(`/api/v${process.env.API_VERSION}/measure`,measureRoutes);
+
 
 app.use(errors());
 
