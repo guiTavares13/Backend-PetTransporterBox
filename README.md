@@ -25,7 +25,7 @@ DATABASE_PASS = 'senha de conexão'
 DATABASE_SCHEMA = 'Nome do schema a ser utilizada'
 DATABASE_PORT = 'Porta de conexão com database'
 PORT = 'Valor da porta a ser exposta'
-
+API_VERSION = 'indica a versão da API (valor numerico)'
 ```
 
 abaixo é apresentado um exemplo
@@ -37,4 +37,5 @@ DATABASE_PASS = 'psw'
 DATABASE_SCHEMA = 'mSchema'
 DATABASE_PORT = 3306
 PORT = '3333'
+API_VERSION = 1
 ```

@@ -17,10 +17,10 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 
 //routes
-app.use('/pet',petRouters);
-app.use('/user',userRoutes);
-app.use('/caixa',boxRoutes);
-app.use('/caixaModel',boxModelRoutes);
+app.use(`/api/v${process.env.API_VERSION}/pet`,petRouters);
+app.use(`/api/v${process.env.API_VERSION}/user`,userRoutes);
+app.use(`/api/v${process.env.API_VERSION}/caixa`,boxRoutes);
+app.use(`/api/v${process.env.API_VERSION}/caixaModel`,boxModelRoutes);
 
 app.use(errors());
 
