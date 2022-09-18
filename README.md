@@ -39,3 +39,7 @@ DATABASE_PORT = 3306
 PORT = '3333'
 API_VERSION = 1
 ```
+
+## Documentação da API
+
+A documentação da API foi feita utilizando o swagger e pode ser encontrada [aqui](./docs/api_swagger.yaml)
