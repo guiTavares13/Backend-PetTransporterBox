@@ -6,8 +6,9 @@ function parseBody(body)
     retPet = new PetModel();
 
     retPet.name = body.name;
+    retPet.age = body.age;
     retPet.breed = body.breed;
-    retPet.category = body.category;
+    retPet.type = body.category;
     
     return retPet;
 
