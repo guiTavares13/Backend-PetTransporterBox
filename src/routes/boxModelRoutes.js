@@ -1,6 +1,8 @@
 const express = require('express');
 const routes = express.Router();
 const {celebrate, Segments, Joi, CelebrateError} = require('celebrate');
+const boxCategoryController = require('../controllers/boxCategoryController')
+const BoxCategoryParser = require('../parsers/boxCategoryParser')
 
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
@@ -10,13 +12,12 @@ routes.post('/',celebrate({
                     largura:Joi.number().required(),
                     })    
             }),(req,res)=>{
-    console.log("Caixa cadastrada com sucesso!!")
-    res.status(201).send({status:"Cadastrado com sucesso"})
+                
+                boxCategoryController.insertBoxCategory(req,res,BoxCategoryParser.parseBody(req.body))
 });
 
 routes.get('/:modelId',(req,res)=>{
-    console.log("Get single model!!")
-    res.status(200).send({box:"fake"});
+    boxCategoryController.getSingleBoxCategory(req,res,req.params.modelId)
 })
 
 routes.put('/:modelId',celebrate({
@@ -27,13 +28,13 @@ routes.put('/:modelId',celebrate({
                     largura:Joi.number().required(),
                     })    
             }),(req,res)=>{
-    console.log("Update single model!!")
+        boxCategoryController.updateBoxCategory(req,res,req.params.modelId,BoxCategoryParser.parseBody(req.body))
+
     res.status(200).send({box:"fake"});
 })
 
 routes.delete('/:modelId',(req,res)=>{
-    console.log("Delete single model!!")
-    res.status(200).send({box:"fake"});
+    boxCategoryController.deleteBoxCategory(req,res,req.params.modelId)
 })
 
 module.exports = routes;

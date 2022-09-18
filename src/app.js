@@ -30,8 +30,4 @@ app.use(`/api/v${process.env.API_VERSION}/measure`,measureRoutes);
 app.use(errors());
 
 
-//database test
-db.authenticate().then(()=>{console.log(`Banco de dados conectado: ${process.env.DATABASE_SCHEMA}`)});
-//db.sync(() => console.log(`Banco de dados conectado: ${process.env.DATABASE_SCHEMA}`));
-
 module.exports = app;

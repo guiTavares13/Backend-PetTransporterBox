@@ -2,6 +2,8 @@ const express = require('express');
 const routes = express.Router();
 const {celebrate, Segments, Joi, CelebrateError} = require('celebrate');
 
+const TripController = require('../controllers/tripController')
+const TripParser = require('../parsers/tripParser')
 
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
@@ -12,19 +14,24 @@ routes.post('/',celebrate({
             }),(req,res)=>{
     
     
-    res.status(201).send({status:"Cadastrado com sucesso"})
+        TripController.insertTrip(req,res,TripParser.parseBody(req.body));
 });
 
 
 
 routes.get('/',(req,res)=>{
    
-    res.status(200).send({trip:"fake"});
+    /**
+     * @TODO Implementar a rota
+     * 
+     */
+    res.send("Rota fake").status(200);
+
 })
 
 routes.get('/:tripId',(req,res)=>{
 
-    res.status(200).send({trip:"fake"});
+    TripController.getSingleTrip(req,res,req.params.tripId);
 })
 
 routes.put('/:tripId',celebrate({
@@ -34,11 +41,11 @@ routes.put('/:tripId',celebrate({
                     date:Joi.string().required()
                          })    
             }),(req,res)=>{
-    res.status(201).send("Atualizado com sucesso!");
+    TripController.updateTrip(req,res,req.params.tripId,TripParser.parseBody(req.params));
 })
 
 routes.delete('/:tripId',(req,res)=>{
-    res.status(200).send("Removido com sucesso!");
+    TripController.deleteTrip(req,res,req.params.tripId);
 })
 
 module.exports = routes;

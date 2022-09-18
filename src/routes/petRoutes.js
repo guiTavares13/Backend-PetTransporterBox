@@ -2,6 +2,8 @@ const express = require('express');
 const routes = express.Router();
 const {celebrate, Segments, Joi, CelebrateError} = require('celebrate');
 
+const PetController = require('../controllers/petController')
+const PetParser = require('../parsers/petParser')
 
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
@@ -11,8 +13,7 @@ routes.post('/',celebrate({
                     category:Joi.string().required(),
                     })    
             }),(req,res)=>{
-    console.log("Pet cadastrado com sucesso!!")
-    res.status(201).send({status:"Cadastrado com sucesso"})
+        PetController.insertPet(req,res,PetParser.parseBody(req.body));
 });
 
 
@@ -21,19 +22,18 @@ routes.post('/link/:petId',celebrate({
                     userId:Joi.string().required()
                     })    
             }),(req,res)=>{
-    console.log("Pet linkado com sucesso!!")
-    res.status(201).send({status:"Link realizado com sucesso"})
+    /**
+     * @TODO Criar controler para fazer o link entre as entidades
+     */
+    res.status(201).send({status:"Link realizado com sucesso"});
 });
 
 routes.get('/',(req,res)=>{
-    console.log("Get pet!!")
-    res.status(200).send({pet:"fake"});
+    PetController.getPets(req,res);
 })
 
 routes.get('/:petId',(req,res)=>{
-    console.log(`Get single pet!! `)
-    console.log(req.params)
-    res.status(200).send({pet:"fake"});
+    PetController.getSinglePet(req,res,req.params.petId);
 })
 
 routes.put('/:petId',celebrate({
@@ -44,13 +44,13 @@ routes.put('/:petId',celebrate({
                     category:Joi.string().required(),
                     })    
             }),(req,res)=>{
-    console.log("Update single pet!!")
-    res.status(200).send({pet:"fake"});
+    PetController.updatePet(req,res,req.params.petId,PetParser.parseBody(req.body));
+
 })
 
 routes.delete('/:petId',(req,res)=>{
-    console.log("Delete single pet!!")
-    res.status(200).send({pet:"fake"});
+    PetController.deletePet(req,res,req.params.petId);
+
 })
 
 module.exports = routes;
