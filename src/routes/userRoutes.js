@@ -1,7 +1,10 @@
 const express = require('express');
 const routes = express.Router();
 const {celebrate, Segments, Joi, CelebrateError} = require('celebrate');
-const userModel = require('../DAO/userModelDAO')
+
+const UserController = require('../controllers/userController');
+const User = require('../DAO/userModelDAO');
+const UserParser = require('../parsers/userParser');
 
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
@@ -9,6 +12,7 @@ routes.post('/',celebrate({
                     documento:Joi.string().required(),
                     lastName:Joi.string().required(),
                     email:Joi.string().required(),
+                    nascimento: Joi.string().required(),
                     password:Joi.string().required(),
                     phone:Joi.string().required(),
                     userStatus: Joi.number().required()
@@ -16,24 +20,9 @@ routes.post('/',celebrate({
             }),async (req,res)=>{
 
                 body = req.body;
-
-                /**
-                 *  @TODO Criar parser para o body da requisição
-                 * 
-                 */
-                user = userModel.build({
-                                    usuario_nome:body.nome,
-                                    usuario_documento: body.documento,
-                                });
+            
+                UserController.insertUser(req,res,UserParser.parseBody(body));
                 
-                try{
-                    await user.save();
-                    res.status(201).send({status:"Cadastrado com sucesso"})
-                }
-                catch(err){
-                    res.status(500).send({status:`${err}`})
-                }
-
 
 
 });
@@ -49,16 +38,9 @@ routes.post('/login',celebrate({
     res.status(201).send({status:"Login realizado com sucesso"})
 });
 
+
 routes.get('/',async (req,res)=>{
-    
-    try
-    {
-        const users = await userModel.findAll();
-        res.status(200).send({users});
-    }
-    catch(err){
-        res.status(500).send({status:`${err}`})
-    }
+    UserController.getUsers(req,res);
 })
 
 routes.get('/logout',(req,res)=>{
@@ -67,17 +49,7 @@ routes.get('/logout',(req,res)=>{
 })
 
 routes.get('/:userId', async (req,res)=>{
-    try
-    {
-        const mUser = await userModel.findAll({  where: {
-            usuario_id: req.params.userId
-          }});
-    
-        res.status(200).send({mUser});
-    }
-    catch(err){
-        res.status(500).send({status:`${err}`})
-    }
+    UserController.getSingleUser(req,res,req.params.userId);
 })
 
 routes.put('/:userId',celebrate({
@@ -91,46 +63,13 @@ routes.put('/:userId',celebrate({
                     })    
             }),async (req,res)=>{
 
-                /**
-                 *  @TODO Criar parser para o body da requisição
-                 * 
-                 */
-                try{
-                    await userModel.update({
-                        usuario_nome:body.nome,
-                        usuario_documento: body.documento,
-                    },{
-                        where:{
-                            usuario_id: req.params.userId
-                        }
-                    });
-
-                    console.log("Update single user!!")
-                    res.status(200).send({status:"Atualizado com sucesso"});
-                }
-                catch(err)
-                {
-                    res.status(500).send({status:`${err}`})
-                }
-
-
+            body = req.body
+            UserController.updateUser(req,res,req.params.userId,UserParser.parseBody(body));
 
 })
 
 routes.delete('/:userId',async (req,res)=>{
-    try{
-        await userModel.destroy({
-            where: {
-                usuario_id: req.params.userId
-            }
-          });
-
-        res.status(200).send({status:"Removido com sucesso"});
-    }
-    catch(err){
-        res.status(500).send({status:`${err}`})
-    }
-
+    UserController.deleteUser(req,res,req.params.userId);
 })
 
 module.exports = routes;
