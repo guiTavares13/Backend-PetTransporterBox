@@ -5,6 +5,12 @@ const {celebrate, Segments, Joi, CelebrateError} = require('celebrate');
 const readingController = require('../controllers/readingController')
 const ReadingParser = require('../parsers/readingParser')
 
+
+const authMiddleware = require('../middlewares/auth');
+
+routes.use(authMiddleware.auth);
+
+
 routes.post('/:tripId',celebrate({
     [Segments.BODY]:Joi.object({
                     openDoor:Joi.boolean().required(),
@@ -31,7 +37,7 @@ routes.get('/:tripId',(req,res)=>{
 })
 
 routes.get('/:measureId',(req,res)=>{
-    
+
     readingController.getSingleReading(req,res,req.params.tripId)
 
 })

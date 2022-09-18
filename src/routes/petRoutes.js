@@ -5,11 +5,16 @@ const {celebrate, Segments, Joi, CelebrateError} = require('celebrate');
 const PetController = require('../controllers/petController')
 const PetParser = require('../parsers/petParser')
 
+const authMiddleware = require('../middlewares/auth');
+
+routes.use(authMiddleware.auth);
+
+
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
                     id:Joi.string().required(),
                     name:Joi.string().required(),
-                    bread:Joi.string().required(),
+                    breed:Joi.string().required(),
                     category:Joi.string().required(),
                     })    
             }),(req,res)=>{
@@ -40,7 +45,7 @@ routes.put('/:petId',celebrate({
     [Segments.BODY]:Joi.object({
                     id:Joi.string().required(),
                     name:Joi.string().required(),
-                    bread:Joi.string().required(),
+                    breed:Joi.string().required(),
                     category:Joi.string().required(),
                     })    
             }),(req,res)=>{

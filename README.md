@@ -26,6 +26,7 @@ DATABASE_SCHEMA = 'Nome do schema a ser utilizada'
 DATABASE_PORT = 'Porta de conexão com database'
 PORT = 'Valor da porta a ser exposta'
 API_VERSION = 'indica a versão da API (valor numerico)'
+MY_JWT_KEY = 'chave para ser utilizada na criptogrfia do jwt'
 ```
 
 abaixo é apresentado um exemplo
@@ -38,6 +39,7 @@ DATABASE_SCHEMA = 'mSchema'
 DATABASE_PORT = 3306
 PORT = '3333'
 API_VERSION = 1
+MY_JWT_KEY = 'MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgGUWMtbvzteb8ZEilw9oAqQibigliIJSSvtCcMtrcIMW5v8ftv0hpxkgOZFS7wlPwzCAEju0W+DBpA307ZwRrigJPrmqG0VG7o91TPa5TVZZfgw1PUeCn4glJ775tf9qc97mC6oOJSk6wfdXyHxXYZYr1ikVt0iUj77KsWRvLAgMBAAE='
 ```
 
 ## Documentação da API
