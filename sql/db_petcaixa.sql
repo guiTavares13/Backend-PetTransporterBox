@@ -107,3 +107,7 @@ CREATE TABLE tb_estadopet_x_leitura(
     FOREIGN KEY (estado_pet) REFERENCES tb_estado_pet(estado_pet_id),
     FOREIGN KEY (leitura) REFERENCES tb_leitura(leitura_id)
 );
+
+INSERT INTO tb_tipo_pet VALUES ('1', 'Pequeno Porte', 'Animal de pequeno porte');
+INSERT INTO tb_tipo_pet VALUES ('2', 'Médio Porte', 'Animal de médio porte');
+INSERT INTO tb_tipo_pet VALUES ('3', 'Grande Porte', 'Animal de grande porte');
