@@ -9,7 +9,7 @@ async function insertReading(req, res, reading)
         viagem: reading.trip,
         estado_pet: reading.petStatus,
         caixa: reading.box,
-        localizacao: reading.petLocalization
+        localizacao: reading.petLocation
     });
 
     try{
@@ -74,7 +74,7 @@ async function updateReading(req, res, readingId, reading)
             viagem: reading.trip,
             estado_pet: reading.petStatus,
             caixa: reading.box,
-            localizacao: reading.petLocalization
+            localizacao: reading.petLocation
         },{
             where:{
                 leitura_id: readingId

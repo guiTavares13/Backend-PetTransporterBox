@@ -5,7 +5,7 @@ class ReadingModel
     trip = "";
     box = "";
     petStatus = 0;
-    petLocalization = "";
+    petLocation = "";
 }
 
 module.exports = ReadingModel;
