@@ -34,7 +34,7 @@ const Read = sequelize.define('Read', {
   }
 }, {
     
-    tableName: 'tb_pet',
+    tableName: 'tb_leitura',
     timestamps: false,
     createdAt: false,
     updatedAt: false,
