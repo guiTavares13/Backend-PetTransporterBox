@@ -82,4 +82,4 @@ async function updateTrip(req, res, tripId, trip)
     }
 }
 
-module.exports = { insertTrip, getSingleTrip, getSingleTrip, deleteTrip, updateTrip }
+module.exports = { insertTrip, getSingleTrip, getSingles, deleteTrip, updateTrip }
