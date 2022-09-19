@@ -8,6 +8,7 @@ function parseBody(body)
     retUser.name = body.nome;
     retUser.document = body.documento;
     retUser.birthday = body.nascimento;
+    retUser.email = body.email;
     retUser.password = body.password;
     retUser.phone = body.phone;
     retUser.userStatus = body.userStatus;
