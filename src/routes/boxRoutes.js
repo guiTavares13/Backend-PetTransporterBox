@@ -8,7 +8,6 @@ const BoxParser = require('../parsers/boxParser')
 
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
-                    id:Joi.string().required(),
                     nome:Joi.string().required(),
                     idModelo:Joi.string().required(),
                     })    

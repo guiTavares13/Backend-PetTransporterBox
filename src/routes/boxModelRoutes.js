@@ -6,7 +6,6 @@ const BoxCategoryParser = require('../parsers/boxCategoryParser')
 
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
-                    id:Joi.string().required(),
                     nome:Joi.string().required(),
                     altura:Joi.number().required(),
                     largura:Joi.number().required(),
