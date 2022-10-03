@@ -5,6 +5,11 @@ const {celebrate, Segments, Joi, CelebrateError} = require('celebrate');
 const PetController = require('../controllers/petController')
 const PetParser = require('../parsers/petParser')
 
+const authMiddleware = require('../middlewares/auth');
+
+routes.use(authMiddleware.auth);
+
+
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
                     id:Joi.string().required(),

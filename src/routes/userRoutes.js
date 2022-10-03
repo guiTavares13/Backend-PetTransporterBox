@@ -6,6 +6,12 @@ const UserController = require('../controllers/userController');
 const User = require('../DAO/userModelDAO');
 const UserParser = require('../parsers/userParser');
 
+const authMiddleware = require('../middlewares/auth');
+const SessionController = require('../controllers/SessionController');
+
+
+
+
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
                     nome:Joi.string().required(),
@@ -33,11 +39,9 @@ routes.post('/login',celebrate({
                     email:Joi.string().required(),
                     senha:Joi.string().required()
                     })    
-            }),(req,res)=>{
-    console.log("Login!!")
-    res.status(201).send({status:"Login realizado com sucesso"})
-});
+            }),SessionController.loadToken);
 
+routes.use(authMiddleware.auth);
 
 routes.get('/',async (req,res)=>{
     UserController.getUsers(req,res);

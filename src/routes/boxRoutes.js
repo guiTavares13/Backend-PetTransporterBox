@@ -5,6 +5,10 @@ const {celebrate, Segments, Joi, CelebrateError} = require('celebrate');
 const boxController = require('../controllers/boxController')
 const BoxParser = require('../parsers/boxParser')
 
+const authMiddleware = require('../middlewares/auth');
+
+routes.use(authMiddleware.auth);
+
 
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
