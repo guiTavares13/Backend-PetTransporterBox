@@ -12,7 +12,7 @@ function parseBody(body)
     retUser.password = body.password;
     retUser.phone = body.phone;
     retUser.userStatus = body.userStatus;
-    
+    retUser.senha = body.password;
     return retUser;
 
 }

@@ -1,14 +1,19 @@
 const UserModel = require('../models/userModel')
 const userDAO = require('../DAO/userModelDAO')
+const Cripto = require('../crypto/criptoService');
 
 async function insertUser(req,res,user)
 {
+
+    hashSenha = await Cripto.generateHash(user.senha);
+
     user = userDAO.build({
         usuario_nome:user.name,
         usuario_documento: user.document,
         usuario_data_nascimento: user.birthday,
         usuario_telefone: user.phone,
-        usuario_email: user.email
+        usuario_email: user.email,
+        usuario_senha: hashSenha
     });
 
     try{
@@ -18,6 +23,17 @@ async function insertUser(req,res,user)
     catch(err){
         res.status(500).send({status:`${err}`})
     }
+}
+
+async function getPswByEmail(req,res,email)
+{
+    
+    const mUser = await userDAO.findAll({  where: {
+            usuario_email: email
+          }});
+
+
+    return mUser[0].usuario_senha;
 }
 
 async function getSingleUser(req,res,userId)
@@ -86,4 +102,4 @@ async function updateUser(req,res,userId,user)
     }
 }
 
-module.exports = {insertUser,getSingleUser,getUsers,deleteUser,updateUser}
+module.exports = {insertUser,getSingleUser,getUsers,deleteUser,updateUser,getPswByEmail}

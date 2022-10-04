@@ -11,7 +11,6 @@ const SessionController = require('../controllers/SessionController');
 
 
 
-
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
                     nome:Joi.string().required(),
