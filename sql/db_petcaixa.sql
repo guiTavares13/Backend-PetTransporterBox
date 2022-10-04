@@ -45,6 +45,7 @@ CREATE TABLE tb_usuario(
     usuario_documento VARCHAR(16),
     usuario_data_nascimento DATETIME,
     usuario_email VARCHAR(128),
+    usuario_senha VARCHAR(512),
     usuario_telefone VARCHAR(32)
 );
 
