@@ -11,7 +11,7 @@ info:
   version: v1
 servers:
   - url: http://localhost/v1/
-  
+  - url: http://192.168.0.104:3333/v1/
 tags:
   - name: pet
     description: API para lidar com os dados dos pets
@@ -927,6 +927,9 @@ components:
         phone:
           type: string
           example: '12345'
+        nascimento:
+          type: string
+          example: "2022-10-05"
         userStatus:
           type: integer
           description: User Status
