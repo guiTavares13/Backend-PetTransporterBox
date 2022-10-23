@@ -15,6 +15,5 @@
 # [START gae_quickstart_yaml]
 runtime: nodejs16
 env_variables:
-  PORT: "8080"
-  API_VERSION: "1"
+  API_VERSION: '1'
 # [END gae_quickstart_yaml]
