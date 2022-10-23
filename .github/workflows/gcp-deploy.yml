@@ -22,6 +22,7 @@ jobs:
     - name: 'Deploy to App Engine'
       uses: 'google-github-actions/deploy-appengine@v0'
       with:
-        deliverables: 'app.yaml'
+        working
+        deliverables: app.yaml
         promote: false
         version: 'v1'
