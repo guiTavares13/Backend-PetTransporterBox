@@ -29,6 +29,9 @@ app.use(`/api/v${process.env.API_VERSION}/measure`,measureRoutes);
 
 app.use('/health',healthRoutes);
 
+app.get('/', (req,res)=>{
+    res.send("Rodando!!").status(200);
+});
 
 app.use(errors());
 
