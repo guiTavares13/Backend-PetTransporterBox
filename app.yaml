@@ -15,5 +15,9 @@
 # [START gae_quickstart_yaml]
 runtime: nodejs16
 env_variables:
-  API_VERSION: '1'
+  API_VERSION: $API_VERSION
+  DATABASE_HOST: $DATABASE_HOST
+  DATABASE_USER: $DATABASE_USER
+  DATABASE_PASS: $DATABASE_PASS
+  DATABASE_SCHEMA: $DATABASE_SCHEMA
 # [END gae_quickstart_yaml]
