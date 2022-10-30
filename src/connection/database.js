@@ -19,6 +19,7 @@ module.exports = sequelize;
 */
 
 //GCP SQL Intranet connection
+const { Sequelize } = require('sequelize');
 
 require('dotenv/config');
 
