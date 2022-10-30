@@ -24,7 +24,8 @@ jobs:
         DATABASE_USER: ${{ secrets.DATABASE_USER }}
         DATABASE_PASS: ${{ secrets.DATABASE_PASS }} 
         DATABASE_SCHEMA: ${{ secrets.DATABASE_SCHEMA }} 
-
+        DATABASE_GCP_INSTANCE: ${{ secrets.DATABASE_GCP_INSTANCE}}
+    
     - id: 'auth'
       uses: 'google-github-actions/auth@v0'
       with:
