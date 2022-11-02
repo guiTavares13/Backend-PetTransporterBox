@@ -38,6 +38,14 @@ const User = sequelize.define('User', {
     timestamps: false,
     createdAt: false,
     updatedAt: false,
+    instanceMethods: {
+      toJSON: function () {
+        var values = Object.assign({}, this.get());
+  
+        delete values.usuario_senha;
+        return values;
+      }
+    }
       
 });
 
