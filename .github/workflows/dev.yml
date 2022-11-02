@@ -39,4 +39,7 @@ jobs:
     - name: Set up MySQL
       run: sudo /etc/init.d/mysql start mysql -e 'CREATE DATABASE ${{ env.DATABASE_SCHEMA_TEST }};' -u${{ env.DATABASE_USER }} -p${{ env.DATABASE_PASS }}
 
+    - name: Create tables in MySQL
+      run: sudo /etc/init.d/mysql start mysql -h ${{ env.DATABASE_SCHEMA_TEST }} -u${{ env.DATABASE_USER }} -p${{ env.DATABASE_PASS }} < ../sql/db_petcaixa_test.sql
+
     - run: npm test
