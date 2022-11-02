@@ -1,5 +1,4 @@
-DROP DATABASE db_caixapet_test;
-CREATE DATABASE db_caixapet_test;
+CREATE DATABASE IF NOT EXISTS db_caixapet_test;
 
 USE db_caixapet_test;
 
