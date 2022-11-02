@@ -10,6 +10,11 @@ var USER_ID = ""
 
 describe('Testes com USER DAO',()=>{
 
+    console.log(process.env.DATABASE_SCHEMA_TEST);
+    console.log(process.env.DATABASE_USER);
+    console.log(process.env.DATABASE_HOST);
+    console.log(process.env.DATABASE_PASS);
+
     test('Cadastro de usuario',async ()=>{
         auxUser = User.build({
             usuario_nome:DUMMY_NAME,
