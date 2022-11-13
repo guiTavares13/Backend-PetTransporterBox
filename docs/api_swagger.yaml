@@ -285,36 +285,20 @@ paths:
 
       security:
         - bearerAuth: []
-        
-  /pet/link/{petId}:
-    post:
+    get:
       tags:
         - pet
-      summary: Associa pet á um novo dono
-      description: Faz a associação entre pet e usuário
-      parameters:
-        - name: petId
-          in: path
-          description: ID do pet
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PetLink'
+      summary: Recupera todos PETs associados ao usuários
+      description: Retorna uma listagem de PETs associados ao usuário
       responses:
         '200':
-          description: Criado com sucesso
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '405':
-          description: Entrada inválida
-          
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetGET' 
       security:
         - bearerAuth: []
-
   /pet/{petId}:
     get:
       tags:
@@ -980,9 +964,6 @@ components:
         - name
       type: object
       properties:
-        id:
-          type: string
-          example: 90fce5c3-22a7-4b4f-822f-1bb34a36c75d
         name:
           type: string
           example: doggie
@@ -992,6 +973,9 @@ components:
         category:
           type: string
           example: Medio Porte
+        age:
+          type: string
+          example: 1
     PetGET:
       required:
         - name

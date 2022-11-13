@@ -1,22 +1,20 @@
 const PetModel = require('../models/petModel')
 const petDAO = require('../DAO/petModelsDAO')
+const sequelize = require('../connection/database');
+const Uuid = require('../utils/UuidGenerator');
 
-async function insertPet(req, res, pet)
+async function insertPet(req, res, pet,userId)
 {
-    pet = petDAO.build({
-        pet_nome:pet.name,
-        pet_idade: pet.age,
-        pet_raca: pet.breed,
-        pet_tipo: pet.type
-    });
-
     try{
-        await pet.save();         
-        res.status(201).send({status:"Cadastrado com sucesso"})
-    }
-    catch(err){
-        res.status(500).send({status:`${err}`})
-    }
+
+        await sequelize.query("CALL proc_add_pet ( :p_pet_id, :p_pet_nome, :p_pet_idade, :p_pet_raca, :p_pet_tipo, :p_user_id) ",
+                           {replacements:{p_pet_id:Uuid.create_UUID(),p_pet_nome:pet.name,p_pet_idade: pet.age, p_pet_raca: pet.breed,p_pet_tipo: pet.type, p_user_id:userId}})    
+       res.status(201).send({status:"Cadastrado com sucesso"})
+   }
+   catch(err){
+       console.log(err);
+       res.status(500).send({status:`${err}`})
+   }
 }
 
 async function getSinglePet(req, res, petId)
@@ -39,8 +37,11 @@ async function getPets(req, res)
 {
     try
     {
-        const pets = await petDAO.findAll();
+        const pets = await sequelize.query("CALL proc_get_pets_user (:p_user_id);",
+        {replacements:{ p_user_id:req.idCliente}});    
+
         res.status(200).send({pets});
+
     }
     catch(err){
         res.status(500).send({status:`${err}`})

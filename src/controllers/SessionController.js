@@ -30,7 +30,7 @@ module.exports = {
                 delete userJson.usuario_senha;
 
                 return res.json({
-                    token:jwt.sign({userId:email,level:1},process.env.MY_JWT_KEY,{
+                    token:jwt.sign({userId:userAux[0].usuario_id,level:1},process.env.MY_JWT_KEY,{
                         expiresIn:'15m'
                     }),
                     user:userJson

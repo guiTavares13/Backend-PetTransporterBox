@@ -12,14 +12,13 @@ routes.use(authMiddleware.auth);
 
 routes.post('/',celebrate({
     [Segments.BODY]:Joi.object({
-                    id:Joi.string().required(),
                     name:Joi.string().required(),
                     age:Joi.string().required(),
                     breed:Joi.string().required(),
                     category:Joi.string().required(),
                     })    
             }),(req,res)=>{
-        PetController.insertPet(req,res,PetParser.parseBody(req.body));
+        PetController.insertPet(req,res,PetParser.parseBody(req.body),req.idCliente);
 });
 
 

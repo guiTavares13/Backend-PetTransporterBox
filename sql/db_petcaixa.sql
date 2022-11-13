@@ -112,3 +112,25 @@ CREATE TABLE tb_estadopet_x_leitura(
 INSERT INTO tb_tipo_pet VALUES ('1', 'Pequeno Porte', 'Animal de pequeno porte');
 INSERT INTO tb_tipo_pet VALUES ('2', 'Médio Porte', 'Animal de médio porte');
 INSERT INTO tb_tipo_pet VALUES ('3', 'Grande Porte', 'Animal de grande porte');
+
+-- PROCEDURES 
+
+DELIMITER $$
+
+CREATE PROCEDURE proc_add_pet(IN p_pet_id VARCHAR(40),IN p_pet_nome VARCHAR(64), IN p_pet_idade INTEGER, IN p_pet_raca VARCHAR(64), IN p_pet_tipo VARCHAR(40), IN p_user_id VARCHAR(40))
+BEGIN
+    INSERT INTO tb_pet VALUES (p_pet_id,p_pet_nome,p_pet_idade,p_pet_raca,p_pet_tipo);
+    INSERT INTO tb_pet_x_usuario VALUES (p_pet_id,p_user_id);
+
+END$$
+
+
+CREATE PROCEDURE proc_get_pets_user(IN p_user_id VARCHAR(40))
+BEGIN
+	SELECT  P.pet_id,
+    P.pet_nome,
+    P.pet_idade,
+    P.pet_raca,
+    P.pet_tipo FROM tb_pet P  left JOIN tb_pet_x_usuario F ON F.pet = P.pet_id WHERE F.usuario = p_user_id;
+END$$
+
