@@ -1,5 +1,6 @@
-const PetModel = require('../models/petModel')
-const petDAO = require('../DAO/petModelsDAO')
+const PetModel = require('../models/petModel');
+const petDAO = require('../DAO/petModelsDAO');
+const petTypeDAO = require('../DAO/petTypeDAO');
 const sequelize = require('../connection/database');
 const Uuid = require('../utils/UuidGenerator');
 
@@ -85,4 +86,18 @@ async function updatePet(req, res, petId, pet)
     }
 }
 
-module.exports = { insertPet, getSinglePet, getPets, deletePet, updatePet }
+async function getTypes(req,res)
+{
+    try
+    {
+        const types = await petTypeDAO.findAll();
+    
+        res.status(200).send({types});
+    }
+    catch(err){
+        res.status(500).send({status:`${err}`})
+    }
+
+}
+
+module.exports = { insertPet, getSinglePet, getPets, deletePet, updatePet,getTypes }

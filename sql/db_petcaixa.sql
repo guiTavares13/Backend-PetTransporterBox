@@ -109,9 +109,10 @@ CREATE TABLE tb_estadopet_x_leitura(
     FOREIGN KEY (leitura) REFERENCES tb_leitura(leitura_id)
 );
 
-INSERT INTO tb_tipo_pet VALUES ('1', 'Pequeno Porte', 'Animal de pequeno porte');
-INSERT INTO tb_tipo_pet VALUES ('2', 'Médio Porte', 'Animal de médio porte');
-INSERT INTO tb_tipo_pet VALUES ('3', 'Grande Porte', 'Animal de grande porte');
+INSERT INTO tb_tipo_pet VALUES ('7b1a6160-63b5-11ed-81ce-0242ac120002', 'Cachorro', 'Animal Canino');
+INSERT INTO tb_tipo_pet VALUES ('89059a10-63b5-11ed-81ce-0242ac120002', 'Gato', 'Animal felino');
+
+-- PET TYPES
 
 -- PROCEDURES 
 

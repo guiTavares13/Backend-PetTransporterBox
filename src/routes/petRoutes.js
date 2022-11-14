@@ -35,6 +35,10 @@ routes.post('/link/:petId',celebrate({
 
 routes.get('/',(req,res)=>{
     PetController.getPets(req,res);
+});
+
+routes.get('/types',(req,res)=>{
+    PetController.getTypes(req,res);
 })
 
 routes.get('/:petId',(req,res)=>{

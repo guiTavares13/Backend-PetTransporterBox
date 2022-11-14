@@ -358,7 +358,31 @@ paths:
       security:
         - bearerAuth: []
         
-            
+  /pet/types:
+  
+    get:
+      tags:
+        - pet
+      summary: Recupera os tipos de animais cadastrados 
+      description: Recupera os tipos de animais cadastrados 
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetType'          
+
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+          
+      security:
+        - bearerAuth: []
+
             
  
   /user:
@@ -948,6 +972,22 @@ components:
         age:
           type: string
           example: 1
+    PetType:
+      required:
+        - tipo_pet_id
+        - tipo_nome
+        - tipo_descricao
+      type: object
+      properties:
+        tipo_pet_id:
+          type: string
+          example: 7b1a6160-63b5-11ed-81ce-0242ac120002
+        tipo_nome:
+          type: string
+          example: Cachorro
+        tipo_descricao:
+          type: string
+          example: Tipo cachorro
     PetGET:
       required:
         - name
