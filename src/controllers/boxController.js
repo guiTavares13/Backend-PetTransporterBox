@@ -1,16 +1,14 @@
 const BoxModel = require('../models/boxModel')
 const boxDAO = require('../DAO/boxModelDAO')
+const sequelize = require('../connection/database');
+const Uuid = require('../utils/UuidGenerator');
 
 async function insertBox(req, res, box)
 {
-    box = boxDAO.build({
-        caixa_nome:box.name,
-        tipo_caixa: box.type
-    });
-
     try{
-        await box.save();         
-        res.status(201).send({status:"Cadastrado com sucesso"})
+        await sequelize.query("CALL proc_add_caixa ( :p_caixa_id, :p_caixa_nome, :p_tipo_caixa, :p_user_id) ",
+        {replacements:{p_caixa_id: Uuid.create_UUID(),p_caixa_nome:box.name,p_tipo_caixa: box.type, p_user_id: req.idCliente}})    
+        res.status(201).send({status:"Cadastrado com sucesso"});
     }
     catch(err){
         res.status(500).send({status:`${err}`})
@@ -37,8 +35,14 @@ async function getBoxes(req, res)
 {
     try
     {
-        const boxes = await boxDAO.findAll();
+        //const boxes = await boxDAO.findAll();
+        //res.status(200).send({boxes});
+
+        const boxes = await sequelize.query("CALL proc_get_caixas_user (:p_user_id);",
+        {replacements:{ p_user_id:req.idCliente}});    
+
         res.status(200).send({boxes});
+        
     }
     catch(err){
         res.status(500).send({status:`${err}`})

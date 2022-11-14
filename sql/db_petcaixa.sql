@@ -124,6 +124,19 @@ BEGIN
 
 END$$
 
+CREATE PROCEDURE proc_add_caixa(IN p_caixa_id VARCHAR(40),IN p_caixa_nome VARCHAR(64), IN p_tipo_caixa VARCHAR(64), IN p_user_id VARCHAR(40))
+BEGIN
+    INSERT INTO tb_caixa VALUES (p_caixa_id,p_caixa_nome,p_tipo_caixa);
+    INSERT INTO tb_caixa_x_usuario VALUES (p_caixa_id,p_user_id);
+END$$
+
+CREATE PROCEDURE proc_get_caixas_user(IN p_user_id VARCHAR(40))
+BEGIN
+	SELECT  B.caixa_id,
+    B.caixa_nome,
+    B.tipo_caixa FROM tb_caixa B  left JOIN tb_caixa_x_usuario U ON U.caixa = B.caixa_id WHERE F.usuario = p_user_id;
+END$$
+
 
 CREATE PROCEDURE proc_get_pets_user(IN p_user_id VARCHAR(40))
 BEGIN

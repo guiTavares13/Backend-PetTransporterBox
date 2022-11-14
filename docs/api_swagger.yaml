@@ -135,35 +135,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Caixa'
-                
-                
-  /caixa/link/{caixa-id}:
-    post:
-      tags:
-        - caixas
-      summary: Altera o usuário dono da caixa
-      description: "Altera o usuário dono do objeto caixa indicado no parametro **caixa-id**"
-      parameters:
-        - name: caixa-id
-          in: path
-          description: ID da caixa
-          required: true
-          schema:
-            type: string
-      requestBody:
-        description: Cadastra um novo dono para a caixa
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CaixaLink'
-        required: true
-      responses:
-        '201':
-          description: Cadastradado com sucesso
-        '401':
-          $ref: '#/components/responses/UnauthorizedError' 
-      security:
-        - bearerAuth: []  
         
   /caixaModel:
     post:
@@ -185,8 +156,9 @@ paths:
           
       security:
         - bearerAuth: []
-        
-        
+
+
+
   /caixaModel/{caixaId}:
     get:
       tags:
