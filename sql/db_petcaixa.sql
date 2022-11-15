@@ -114,6 +114,11 @@ INSERT INTO tb_tipo_pet VALUES ('89059a10-63b5-11ed-81ce-0242ac120002', 'Gato', 
 
 -- PET TYPES
 
+
+INSERT INTO tb_tipo_caixa VALUES ('f1d6e894-646b-11ed-81ce-0242ac120002','Modelo 1', 15 ,20);
+INSERT INTO tb_tipo_caixa VALUES ('07c0bad6-646c-11ed-81ce-0242ac120002','Modelo 2', 15 ,20);
+
+
 -- PROCEDURES 
 
 DELIMITER $$

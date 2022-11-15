@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      DATABASE_HOST: localhost
+      DATABASE_HOST: 127.0.0.1
       DATABASE_USER: root
       DATABASE_PASS: root
       DATABASE_SCHEMA_TEST: db_caixapet_test
