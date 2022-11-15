@@ -111,3 +111,5 @@ CREATE TABLE tb_estadopet_x_leitura(
 INSERT INTO tb_tipo_pet VALUES ('1', 'Pequeno Porte', 'Animal de pequeno porte');
 INSERT INTO tb_tipo_pet VALUES ('2', 'Médio Porte', 'Animal de médio porte');
 INSERT INTO tb_tipo_pet VALUES ('3', 'Grande Porte', 'Animal de grande porte');
+
+INSERT INTO tb_tipo_caixa VALUES ('DUMMY_TYPE','DUMMY_TYPE',15,21);

@@ -10,10 +10,7 @@ var USER_ID = ""
 
 describe('Testes com USER DAO',()=>{
 
-    console.log(process.env.DATABASE_SCHEMA_TEST);
-    console.log(process.env.DATABASE_USER);
-    console.log(process.env.DATABASE_HOST);
-    console.log(process.env.DATABASE_PASS);
+
 
     test('Cadastro de usuario',async ()=>{
         auxUser = User.build({
@@ -32,7 +29,11 @@ describe('Testes com USER DAO',()=>{
     })
 
     test('Leitura do usuario',async ()=>{
-        await User.findAll({where:{usuario_id:USER_ID}});
+        result = await User.findAll({where:{usuario_id:USER_ID}});
+        result = result[0].toJSON();
+
+        expect(result.usuario_nome).toBe(DUMMY_NAME);
+       
     })
 
     test('Remoção do usuario',async ()=>{
