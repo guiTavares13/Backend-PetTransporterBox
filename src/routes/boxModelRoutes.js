@@ -24,6 +24,10 @@ routes.get('/:modelId',(req,res)=>{
     boxCategoryController.getSingleBoxCategory(req,res,req.params.modelId)
 })
 
+routes.get('/',(req,res)=>{
+    boxCategoryController.getBoxCategories(req,res)
+})
+
 routes.put('/:modelId',celebrate({
     [Segments.BODY]:Joi.object({
                     id:Joi.string().required(),

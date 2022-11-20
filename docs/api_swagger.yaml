@@ -157,7 +157,15 @@ paths:
       security:
         - bearerAuth: []
 
-
+    get:
+      tags:
+      - caixas Model
+      summary: Recupera todos os modelos de caixas
+      description: Recupera todos os modelos de caixas
+      responses:
+        '200':
+            $ref: '#/components/responses/CaixaModelArray'
+    
 
   /caixaModel/{caixaId}:
     get:
@@ -1133,7 +1141,16 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/CaixaGET'
-            
+
+    CaixaModelArray:
+      description: Lista de modelos de caixa
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CaixaModel'    
+
     LeituraArray:
       description: Lista de Leituras
       content:

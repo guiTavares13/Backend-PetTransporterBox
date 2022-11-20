@@ -34,6 +34,8 @@ async function getSingleBoxCategory(req, res, boxCategoryId)
 
 }
 
+
+
 async function getBoxCategories(req, res)
 {
     try
