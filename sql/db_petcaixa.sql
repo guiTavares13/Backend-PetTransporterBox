@@ -89,10 +89,8 @@ CREATE TABLE tb_leitura(
     leitura_porta_aberta BIT(1),
     viagem VARCHAR(40),
     estado_pet VARCHAR(40),
-    caixa VARCHAR(40),
-    localizacao VARCHAR(40),
+    localizacao VARCHAR(60),
     FOREIGN KEY (viagem) REFERENCES tb_viagem(viagem_id),
-    FOREIGN KEY (caixa) REFERENCES tb_caixa(caixa_id)
 );
 
 CREATE TABLE tb_localizacaopet_x_leitura(

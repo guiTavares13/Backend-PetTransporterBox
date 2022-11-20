@@ -8,7 +8,6 @@ async function insertReading(req, res, reading)
         leitura_porta_aberta: reading.openDoor,
         viagem: reading.trip,
         estado_pet: reading.petStatus,
-        caixa: reading.box,
         localizacao: reading.petLocation
     });
 

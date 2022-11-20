@@ -25,12 +25,8 @@ const Read = sequelize.define('Read', {
     type: DataTypes.UUID,
     allowNull: false
   },
-  caixa:{
-    type: DataTypes.UUID,
-    allowNull: false
-  },
   localizacao:{
-    type: DataTypes.UUID,
+    type: DataTypes.STRING,
     allowNull: false
   }
 }, {

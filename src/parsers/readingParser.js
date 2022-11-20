@@ -8,7 +8,7 @@ function parseBody(body)
     retReading.openDoor = body.openDoor;
     retReading.box = body.caixaId;
     retReading.date = body.date;
-    retReading.petLocation = body.location;
+    retReading.petLocation = `${body.location.latitude},${body.location.longitude}`;
     retReading.petStatus = body.petState;
     
     return retReading;

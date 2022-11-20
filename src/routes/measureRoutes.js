@@ -14,7 +14,6 @@ routes.use(authMiddleware.auth);
 routes.post('/:tripId',celebrate({
     [Segments.BODY]:Joi.object({
                     openDoor:Joi.boolean().required(),
-                    caixaId:Joi.string().required(),
                     date:Joi.string().required(),
                     location: Joi.object({latitude:Joi.number().required(),longitude:Joi.number().required()}).required(),
                     petState: Joi.string().required()
