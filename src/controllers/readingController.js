@@ -40,7 +40,9 @@ async function getReadings(req, res)
 {
     try
     {
-        const readings = await readingDAO.findAll();
+        const readings = await readingDAO.findAll({where: {
+            viagem: req.params.tripId
+          }});
         res.status(200).send({readings});
     }
     catch(err){

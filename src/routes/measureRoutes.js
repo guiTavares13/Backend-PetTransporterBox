@@ -25,13 +25,9 @@ routes.post('/:tripId',celebrate({
 
 
 
-routes.get('/:tripId',(req,res)=>{
-    /**
-     * @TODO Buscar todas as leituras da viagem escolhida
-     * 
-     * */
-    //readingController.getSingleReading(req,res,req.params.tripId)
-    res.send("Rota fake").status(200);
+routes.get('/trip/:tripId',(req,res)=>{
+
+    readingController.getReadings(req,res);
 
 })
 
