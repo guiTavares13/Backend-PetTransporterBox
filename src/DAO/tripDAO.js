@@ -18,7 +18,10 @@ const Trip = sequelize.define('Trip', {
     type: DataTypes.UUID,
     allowNull: false
   },
- 
+  viagem_data:{
+    type: DataTypes.DATE,
+    allowNull: false
+  }
 }, {
     
     tableName: 'tb_viagem',
