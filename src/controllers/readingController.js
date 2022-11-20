@@ -6,7 +6,7 @@ async function insertReading(req, res, reading)
     reading = readingDAO.build({
         leitura_data:reading.date,
         leitura_porta_aberta: reading.openDoor,
-        viagem: reading.trip,
+        viagem: req.params.tripId,
         estado_pet: reading.petStatus,
         localizacao: reading.petLocation
     });
