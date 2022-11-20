@@ -23,14 +23,8 @@ routes.post('/',celebrate({
 
 
 
-routes.get('/',(req,res)=>{
-   
-    /**
-     * @TODO Implementar a rota
-     * 
-     */
-    res.send("Rota fake").status(200);
-
+routes.get('/pet/:petId', (req,res)=>{
+   TripController.getTripsByPet(req,res,req.params.petId);
 })
 
 routes.get('/:tripId',(req,res)=>{

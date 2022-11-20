@@ -140,7 +140,7 @@ CREATE PROCEDURE proc_get_caixas_user(IN p_user_id VARCHAR(40))
 BEGIN
 	SELECT  B.caixa_id,
     B.caixa_nome,
-    B.tipo_caixa FROM tb_caixa B  left JOIN tb_caixa_x_usuario U ON U.caixa = B.caixa_id WHERE F.usuario = p_user_id;
+    B.tipo_caixa FROM tb_caixa B  left JOIN tb_caixa_x_usuario U ON U.caixa = B.caixa_id WHERE U.usuario = p_user_id;
 END$$
 
 

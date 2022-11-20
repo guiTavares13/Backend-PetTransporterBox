@@ -34,11 +34,13 @@ async function getSingleTrip(req, res, tripId)
 
 }
 
-async function getTrips(req, res)
+async function getTripsByPet(req, res, petId)
 {
     try
     {
-        const trips = await tripDAO.findAll();
+        const trips = await tripDAO.findAll({where: {
+            pet : petId
+        }});
         res.status(200).send({trips});
     }
     catch(err){
@@ -82,4 +84,4 @@ async function updateTrip(req, res, tripId, trip)
     }
 }
 
-module.exports = { insertTrip, getSingleTrip, getTrips, deleteTrip, updateTrip }
+module.exports = { insertTrip, getSingleTrip, getTripsByPet, deleteTrip, updateTrip }

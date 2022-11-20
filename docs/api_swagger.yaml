@@ -569,7 +569,28 @@ paths:
           
       security:
         - bearerAuth: []
-    
+
+  /trip/pet/{petID}:
+    get:
+      tags:
+        - Viagens
+      summary: Busca as viagens do pet selecionado
+      parameters:
+        - name: petID
+          in: path
+          description: Id do pet
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViagemGET' 
+
+
   /trip/{tripId}:
     get:
       tags:
@@ -1024,7 +1045,7 @@ components:
         petId:
           type: string
           example: 7dbb95a2-3489-11ed-a261-0242ac120002
-        caixaID: 
+        caixaId: 
           type: string
           example: 7dbb95a2-3489-11ed-a274-0242ac120002
         date:
